@@ -1,0 +1,50 @@
+[
+	{
+		"username": "mdrewe0",
+		"email": "bcorradeschi0@si.edu",
+		"password": "Mat182",
+		"role": "Staff",
+		"phoneNumber": "8091065740",
+		"address": "65 Myrtle Point"
+	},
+	{
+		"username": "brossborough1",
+		"email": "avolet1@behance.net",
+		"password": "Zamit",
+		"role": "Staff",
+		"phoneNumber": "8433778021",
+		"address": "984 Coleman Plaza"
+	},
+	{
+		"username": "cjanouch2",
+		"email": "bagent2@eventbrite.com",
+		"password": "Fixan",
+		"role": "Staff",
+		"phoneNumber": "5867759039",
+		"address": "5596 Gulseth Way"
+	},
+	{
+		"username": "oschwandner0",
+		"email": "rdrydale0@squidoo.com",
+		"password": "Cardguard",
+		"role": "Staff",
+		"phoneNumber": "5012526410",
+		"address": "348 Anzinger Center"
+	},
+	{
+		"username": "admin12i8",
+		"email": "adminSuper@gmail.com",
+		"password": "humanSuper",
+		"role": "Admin",
+		"phoneNumber": "018275992719",
+		"address": "Depok Bojong"
+	},
+	{
+		"username": "bshegog1",
+		"email": "gyakuntzov1@microsoft.com",
+		"password": "Namfix",
+		"role": "Staff",
+		"phoneNumber": "1313697816",
+		"address": "67987 Lindbergh Junction"
+	}
+]

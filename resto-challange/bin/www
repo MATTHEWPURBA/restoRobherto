@@ -1,0 +1,12 @@
+const app = require("../app");
+const port = process.env.port || 3000;
+// ini port dan app listen nya dipindah kesini biar gaperlu ribet pas testing dan development
+
+
+
+app.listen(port, () => {
+	console.log(`Example app listening on port ${port}`);
+});
+
+
+/** tiap nodemon harus nodemon bin/www */ 

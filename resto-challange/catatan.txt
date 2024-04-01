@@ -1,0 +1,311 @@
+LANGKAH LANGKAH
+
+1. npm i pg express ejs
+
+2. npm i sequelize sequelize-cli
+
+npm i -d nodemon
+
+3. npx sequelize init
+
+4. Setting Config
+
+5. npx sequelize db:create
+
+
+//untuk pembuatan table
+
+
+6 buat model dan juga migrations: (SEBELUM BUAT MODEL GENERATE, BUAT DULU TABLE YANG GAPUNYA RELASI BIAR GA ERROR)
+
+npx sequelize-cli model:generate --name Incubator --attributes name:string,code:string,location:string,level:string
+
+npx sequelize-cli model:generate --name Startup --attributes startUpName:string,founderName:string,dateFound:date,educationOfFounder:string,roleOfFounder:string,IncubatorId:integer
+
+
+
+npx sequelize-cli model:generate --name Category --attributes name:string
+npx sequelize-cli model:generate --name User --attributes username:string,email:string,password:string,role:string,phoneNumber:string,address:string
+
+npx sequelize-cli model:generate --name Cuisine --attributes name:string,description:string,price:integer,imgUrl:string,CategoryId:integer,UserId:integer
+
+
+
+
+
+// nama table harus singular, dan kalo create jangan kasi space antara koma
+
+npx sequelize-cli model:generate --name Category --attributes name:string
+
+npx sequelize-cli model:generate --name Product --attributes name:string,description:string,price:integer,CategoryId:integer,stock:integer,urlPicture:text
+
+npx sequelize-cli model:generate --name User --attributes username:string,password:string,email:string,role:string
+
+npx sequelize-cli model:generate --name UserProfile --attributes fullName:string,profilePicture:text,UserId:integer,dateOfBirth:date
+
+npx sequelize-cli model:generate --name Cart --attributes UserId:integer,ProductId:integer
+
+
+
+
+
+
+
+7. jika menggunakan reference (dua TABEL type reference ONE TO MANY):
+IncubatorId: {
+				type: Sequelize.INTEGER,
+				references: {
+					model: {
+						tableName: "Incubators",
+					  key: "id",
+					},
+				},
+				onDelete: "CASCADE",
+				onUpdate: "CASCADE",
+			},
+
+penggunaan reference nya pakai nama table versi plural dengan 's'
+tambah unique : true (GAPERLUUU KALO CUMAN ONE TO MANY DOANG)
+
+jika menggunakan reference (tiga TABEL type reference ONE TO MANY dan ONeto ONE):
+IncubatorId: {
+				type: Sequelize.INTEGER,
+				unique: true,
+				references: {
+					model: {
+						tableName: "Incubators",
+					},
+					key: "id",
+				},
+				onDelete: "CASCADE",
+				onUpdate: "CASCADE",
+			},
+
+
+8 npx sequelize db:migrate
+
+
+//untuk pembuatan table
+
+
+
+
+//untuk pembuatan seeding
+
+
+npx sequelize seed:create --name "seedIncubator"
+
+npx sequelize seed:create --name "seedStartup"
+
+
+npx sequelize db:seed:all
+
+//untuk pembuatan seeding
+
+
+GABOLEH HAPUS FOLDER CONFIG ATAU MODEL KALO GA NANTI ERROR
+
+
+KALO MAU HAPUS MIGRATION ATAU MODEL harus bersamaan
+dan config juga harus dihapus
+
+// ini code untuk addAge
+
+
+1. npx sequelize migration:generate --name "addingNewColumnValuation"
+
+2. npx sequelize db:migrate
+
+
+3. npx sequelize db:seed:all
+
+4. jangan lupa menambahkan age: DataTypes.INTEGER, karena tadi nya 
+attribute age tidak di migrate secara bersaaamaan 
+
+
+// ini codde untuk addAge
+
+
+
+UNTUK YANG DI EJS FORM EDIT GA PAKE FOR EACH KENAPA??
+
+
+/**ini form untuk filtering
+
+         <form action="/" method="get">
+            <label  for="education">Education</label>
+             <select name="order">
+             <% let education =  ["Master Degree", "Bachelor Degree"]%>
+             <option selected disabled> Filter By Degree </option>
+             <% education.forEach((el) => { %>
+               <option value="<%= el %>"><%= el  %></option>
+               <% }) %>
+             </select>
+          
+
+/**ini form untuk filtering
+
+
+
+ini form untuk membuat sebuah input form dengan tipe select
+
+
+          <label for="education">Education</label>
+          <select name="education">
+          <% let educations =  ["Master Degree", "Bachelor Degree"]%>
+          <option selected disabled> Select Education </option>
+          <% educations.forEach((el) => { %>
+            <option value="<%= el  %>"><%= el  %></option>
+            <% }) %>
+          </select>
+
+
+ini form untuk membuat sebuah input form dengan tipe select
+
+
+
+
+ini form untuk membuat sebuah input form dengan tipe radio BUTTON
+ <div class="form-check">
+            <input class="form-check-input" type="radio" name="level" id="exampleRadios1" value="<%= el %>">
+            <label class="form-check-label" for="level">
+              <%= el %>
+            </label>
+          </div>
+ini form untuk membuat sebuah input form dengan tipe radio BUTTON
+
+
+
+************************* CATATAN BARU *************************
+
+1. let dataStartup = require("../data/startup.json").map((element) => {
+			delete element.id;
+			element.createdAt = new Date();
+			element.updatedAt = new Date();
+			return element;
+		});
+
+kalau dari JSON ada id harus langsung di lakukan delete id.
+
+2. IncubatorId: {
+				type: DataTypes.INTEGER,
+				references: {
+					model: "Incubators",
+					key: "id",
+				},
+			},
+
+di model table yang memiliki belongs to, harus mempunyai reference di model 
+FOREIGN KEY nya.
+
+
+3. harus dibuat incubatorId
+let { incubatorId } = req.params;
+
+yang sesuai dengan router di index ROUTES NYA
+
+router.get("/incubators/add", Controller.addingincubators);
+
+router.post("/incubators/add", Controller.savePost);
+
+router.get("/incubators/:incubatorId", Controller.editincubators);
+
+router.get("/incubators/:incubatorId/startUp/add", Controller.addStartups);
+
+router.post("/incubators/:incubatorId/startUp/add", Controller.saveStartups);
+
+
+4. kalo mau create table baru yang punya value berdasakan reference 
+harus modified controller 
+
+await Startup.create({
+				startUpName,
+				founderName,
+				dateFound,
+				educationOfFounder,
+				roleOfFounder,
+				IncubatorId: incubatorId,
+				valuation,
+			});
+jadi IncubatorId ; incubatorId(ini liat aja dari req params)
+
+
+
+5. KLAO MAU COPY FILES YANG BANYAK dari GIT CLONE REPO KE 
+REPO LAINNYA JANGAN SAMPAI COPY FOLDER yang ada di 'FILE CANT BE COPIED.png'
+
+.git folder gaboleh di copyyy
+
+
+--------====CARA MENGGUNAKAN HELPER--------====
+
+1. bikin function di file formatter di folder helper
+
+function age(value) {
+	let umur = value;
+	const today = new Date();
+	let diffInMilliSeconds = today.getTime() - umur.getTime();
+	let diffInYears = diffInMilliSeconds / 1000 / 60 / 60 / 24 / 365.25;
+	return Math.abs(Math.round(diffInYears));
+}
+
+
+buat insert juga di atas nya
+const { age } = require("../helpers/formatter");
+
+
+
+lalu buat get age di model Startup yang mempunya value yang mau di modified
+dan nanti nya akan dipanggil (kebetulan 
+di taro di startup karena udah di include di 
+controller)
+
+get age() {
+			return age(this.dateFound);
+		}
+
+
+
+--------====CARA MENGGUNAKAN MANY TO MANY--------====
+
+
+class User extends Model {
+    static associate(models) {
+      User.belongsToMany(models.Product, {
+        through: models.Cart,
+        foreignKey: "Userid",
+        otherKey: "ProductId",
+      });
+      User.hasOne(models.UserProfile, {
+        foreignKey: "UserId",
+      });
+    }
+  }
+
+
+  
+   class Product extends Model {
+    static associate(models) {
+      Product.belongsTo(models.Category);
+      Product.belongsToMany(models.User,{
+        through:models.Cart,
+        foreignKey:'ProductId',
+        otherKey:'UserId'
+      })
+    }
+  }
+
+
+ class Cart extends Model {
+    static associate(models) {
+      Cart.belongsTo(models.User)
+      Cart.belongsTo(models.Product)
+    }
+  }
+
+
+--------====CARA MENGGUNAKAN bcryptjs AUTHETHICATION --------====
+
+
+
+npm install bcryptjs

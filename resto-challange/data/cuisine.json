@@ -1,0 +1,82 @@
+[
+	{
+		"name": "Cakes",
+		"description": "Whole Cakes. Indulge in premium-quality cakes.",
+		"price": 20000,
+		"imgUrl": "http://dummyimage.com/225x237.png/ff4444/ffffff",
+		"CategoryId": 2,
+		"UserId": 4
+	},
+	{
+		"name": "Iced Tea",
+		"description": "Crisp and refreshing homemade iced tea is so simple to make and easy to scale up for parties.",
+		"price": 199931,
+		"imgUrl": "http://dummyimage.com/240x238.png/5fa2dd/ffffff",
+		"CategoryId": 1,
+		"UserId": 5
+	},
+	{
+		"name": "Donat",
+		"description": "A doughnut or donut is a type of pastry made from leavened fried dough.",
+		"price": 3065090,
+		"imgUrl": "http://dummyimage.com/231x224.png/cc0000/ffffff",
+		"CategoryId": 2,
+		"UserId": 1
+	},
+	{
+		"name": "Red Candies",
+		"description": "Candy, alternatively called sweets or lollies, is a confection that features sugar as a principal ingredient.",
+		"price": 8021299,
+		"imgUrl": "http://dummyimage.com/224x234.png/cc0000/ffffff",
+		"CategoryId": 2,
+		"UserId": 4
+	},
+	{
+		"name": "Chicken Satay",
+		"description": "Satay, or sate in Indonesian spelling, is a Southeast Asian form of kebab made from seasoned",
+		"price": 57379282,
+		"imgUrl": "http://dummyimage.com/202x236.png/dddddd/000000",
+		"CategoryId": 4,
+		"UserId": 1
+	},
+	{
+		"name": "Spaghetti Bombolone",
+		"description": "Spaghetti is a long, thin, solid, cylindrical pasta. It is a staple food of traditional Italian cuisine.",
+		"price": 3324521,
+		"imgUrl": "http://dummyimage.com/214x246.png/ff4444/ffffff",
+		"CategoryId": 3,
+		"UserId": 1
+	},
+	{
+		"name": "Murtabak",
+		"description": "Vegetarian murtabaks and other forms of murtabaks with chicken",
+		"price": 18598831,
+		"imgUrl": "http://dummyimage.com/216x222.png/5fa2dd/ffffff",
+		"CategoryId": 3,
+		"UserId": 4
+	},
+	{
+		"name": "Fritter",
+		"description": "A fritter is a portion of meat, seafood, fruit, vegetables, or other ingredients",
+		"price": 609982818,
+		"imgUrl": "http://dummyimage.com/226x217.png/dddddd/000000",
+		"CategoryId": 4,
+		"UserId": 2
+	},
+	{
+		"name": "Brownies",
+		"description": "A chocolate brownie, or simply a brownie, is a chocolate baked confection",
+		"price": 154617123,
+		"imgUrl": "http://dummyimage.com/209x236.png/ff4444/ffffff",
+		"CategoryId": 2,
+		"UserId": 3
+	},
+	{
+		"name": "Meatball",
+		"description": "A meatball is ground meat rolled into a ball, sometimes along with other ingredients,",
+		"price": 825572881,
+		"imgUrl": "http://dummyimage.com/242x213.png/5fa2dd/ffffff",
+		"CategoryId": 4,
+		"UserId": 3
+	}
+]
